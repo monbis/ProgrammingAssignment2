@@ -1,5 +1,5 @@
-## Put comments here that give an overall description of what your
-## functions do
+#  Cacheable Matrix Inverse calculator
+#
 
 #
 #  Creates a list that
@@ -32,7 +32,17 @@ makeCacheMatrix <- function(cachedVal = matrix()) {
 # Either calculates of returns from cache the 
 # martix inverse, and stores it in cache in the
 # former case
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(inverseList, ...) {
         ## Return a matrix that is the inverse of 'x'
-          
-}
+        inv <- inverseList$getInv()
+        if (!is.null(inv)) {
+          message("Cache Hit")
+          return(inv)
+        }
+        #  No cache hit, so work it out and store in cache
+        mat <= inverseList$get()
+        inv <- solve(mat,...)
+        inverseList$setInv(inv)
+        inv
+}        
+
